@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-css/bootstrap.min.css')}}">
+    
+    <script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap-js/bootstrap.min.js')}}"></script>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Ruoruo的博客</title>
+    
+</head>
+<body class="mainBody">
+    <div class="paperDiv">
+        <h2 class="articleTitle">{{title}}</h2>
+
+
+
+
+        {{ body |safe}}
+    </div>
+    <div class="commentDiv">
+        
+
+        <form>
+            <textarea rows="5"  placeholder="评论" class="commentText"></textarea>
+            <br>
+            <button>发表评论</button>
+        </form>
+    </div>
+
+</body>
+</html>
