@@ -1,4 +1,5 @@
 window.onload=function(){
+	trackUser();
 	$('#commentForm').submit(function(event){
 		event.preventDefault();
 		var postData = $(this).serializeArray();

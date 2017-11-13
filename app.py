@@ -4,8 +4,8 @@ from flask import request;
 import mysql.connector;
 import datetime
 app = Flask(__name__)
-
-def trackUser(addr):
+@app.route('/trackUser', methods=['GET', 'POST'])
+def trackUser():
     addr=request.environ['REMOTE_ADDR']
     cnx = mysql.connector.connect(user='root', password='drwssp',
                               host='localhost',
@@ -18,6 +18,7 @@ def trackUser(addr):
     cur.execute(addVisit, data_visit)
     cnx.commit()
     cnx.close()
+
 def getArticle():
     cnx = mysql.connector.connect(user='root', password='drwssp',
                               host='localhost',
@@ -50,7 +51,6 @@ def getComments():
 @app.route('/', methods=['GET', 'POST'])
 def renderArticle():
     addr=request.environ['REMOTE_ADDR']
-    trackUser(addr)
     article=getArticle()
     comments=getComments()
     return flask.render_template('article.html',title=article[0], body=article[1], comments=comments)
