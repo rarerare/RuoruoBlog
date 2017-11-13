@@ -6,18 +6,20 @@ import datetime
 app = Flask(__name__)
 @app.route('/trackUser', methods=['GET', 'POST'])
 def trackUser():
+    TZO=request.form['TZO']
     addr=request.environ['REMOTE_ADDR']
     cnx = mysql.connector.connect(user='root', password='drwssp',
                               host='localhost',
                               database='ruoblog')
-    addVisit=("INSERT INTO visit (ipv4, time) \
-        VALUES(%s, %s)")
+    addVisit=("INSERT INTO visit (ipv4, time, TZO) \
+        VALUES(%s, %s, %s)")
 
-    data_visit=(addr, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    data_visit=(addr, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),TZO )
     cur=cnx.cursor()
     cur.execute(addVisit, data_visit)
     cnx.commit()
     cnx.close()
+    return ""
 
 def getArticle():
     cnx = mysql.connector.connect(user='root', password='drwssp',
@@ -50,7 +52,6 @@ def getComments():
 
 @app.route('/', methods=['GET', 'POST'])
 def renderArticle():
-    addr=request.environ['REMOTE_ADDR']
     article=getArticle()
     comments=getComments()
     return flask.render_template('article.html',title=article[0], body=article[1], comments=comments)
