@@ -7,6 +7,7 @@
     <script src="{{url_for('static', filename='js/bootstrap-js/bootstrap.min.js')}}"></script>
 
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/init.js')}}"></script>
     <title>Ruoruo的博客</title>
     
 </head>
@@ -22,11 +23,18 @@
     <div class="commentDiv">
         
 
-        <form action="comment" method="post">
+        <form action="comment" method="post" id="commentForm">
             <textarea rows="5"  placeholder="评论" class="commentText" name="comment"></textarea>
             <br>
             <button type="submit">发表评论</button>
         </form>
+        <hr>
+        <div id="preCommentsDiv">
+            {% for comment in comments %}
+            <div>{{comment.comment}}<br>{{comment.time}}</div><hr>
+            {% endfor %}
+        </div>
+        
     </div>
 
 </body>
