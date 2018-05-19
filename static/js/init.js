@@ -14,7 +14,7 @@ window.onload=function(){
 	        	var newComment=document.createElement('div');
 	        	newComment.innerHTML=data+"<hr>";
 	            $('#preCommentsDiv').append(newComment);
-	            alert("评论成功")
+	            alert("Comment Submitted")
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
 	        {
