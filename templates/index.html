@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script src="{{url_for('static', filename='js/init.js')}}"></script>
+    <script src='static/js/tab.js'></script>
+    <title>Ruoruo</title>
 </head>
-<body>
+<body class="mainBody">
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'introTab')">About</button>
+  <button class="tablinks" onclick="openTab(event, 'NovellaTab')">Novellas & Short Stories</button>
+  <button class="tablinks" onclick="openTab(event, 'ThoughtsTab')">Random Thoughts</button>
+</div>
 
+<div id="introTab" class="tabcontent active" style="display: block">
+  <h3>About</h3>
+  <p>Hi.</p>
+</div>
+
+<div id="NovellaTab" class="tabcontent">
+  <p>Novellas & Stories</p> 
+</div>
+
+<div id="ThoughtsTab" class="tabcontent">
+  <p>Random Thoughts</p>
+</div>
 </body>
 </html>

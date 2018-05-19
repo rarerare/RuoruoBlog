@@ -51,6 +51,10 @@ def getComments():
     return comments;
 
 @app.route('/', methods=['GET', 'POST'])
+def renderMain():
+    return flask.render_template("index.html")
+
+@app.route('/renderArticle', methods=['GET', 'POST'])
 def renderArticle():
     article=getArticle()
     comments=getComments()
