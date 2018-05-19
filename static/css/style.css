@@ -54,7 +54,7 @@
     transition: 0.3s;
     font-size: 17px;
     margin-bottom: : 0px;
-    background-color: #ccc;
+    background-color: #f8f8f1;
 
 }
 
@@ -63,8 +63,8 @@
 }
 
 .tab button.active {
+    background-color: #ccc;
     
-    background-color: #f1f1f1;
 }
 
 .tabcontent {
